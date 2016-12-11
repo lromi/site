@@ -1,0 +1,160 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org" >
+<head>
+
+    <meta charset="utf-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
+    <meta http-equiv="x-ua-compatible" content="ie=edge"/>
+
+    <title>Material </title>
+
+     <!--Font Awesome-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.0/css/font-awesome.min.css"/>
+
+    <!-- Bootstrap core CSS -->
+    <link href="../css/bootstrap.min.css" th:href="@{/css/bootstrap.min.css}" rel="stylesheet" />
+
+    <!-- Material Design Bootstrap -->
+    <link href="../css/mdb.min.css" th:href="@{/css/mdb.min.css}" rel="stylesheet" />
+
+    <!-- Your custom styles (optional) -->
+    <link href="../css/style.css" th:href="@{/css/style.css}" rel="stylesheet" />
+
+    <!--<link href="webjars/bootstrap/3.2.0/css/bootstrap.min.css" rel="stylesheet" media="screen"/>-->
+
+</head>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script type="text/javascript">
+
+
+    var RestGet = function() {
+                $.ajax({
+                    type: 'GET',
+                    url:  '/factors/1',
+                    dataType: 'json',
+                    async: true,
+                    success: function(result) {
+                        alert('ID: ' + result.id
+                                + ', сообщение: ' + result.name + ', оценка: ' + result.mark);
+                    },
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert(jqXHR.status + ' ' + jqXHR.responseText);
+                    }
+                });
+            }
+    var RestGetAll = function() {
+                $.ajax({
+                    type: 'GET',
+                    url:  '/factors',
+                    dataType: ' json',
+                    async: true,
+                    success: function(resultAll) {
+
+                        for (result in resultAll)
+                            document.getElementById('mylocation').innerHTML = 'ID: ' + result.id
+                                    + ', сообщение: ' + result.name + ', оценка: ' + result.mark;
+                    }
+
+                });
+            }
+</script>
+<body>
+
+
+<script src="http://code.jquery.com/jquery.js"></script>
+<!--<script src="webjars/bootstrap/3.2.0/js/bootstrap.min.js"></script>-->
+
+<header>
+
+    <!--Navbar-->
+    <nav class="navbar navbar-dark bg-primary">
+
+        <!-- Collapse button-->
+        <button class="navbar-toggler hidden-sm-up" type="button" data-toggle="collapse" data-target="#collapseEx2">
+            <i class="fa fa-bars"></i>
+        </button>
+
+        <div class="container">
+
+            <!--Collapse content-->
+            <div class="collapse navbar-toggleable-xs" id="collapseEx2">
+                <!--Navbar Brand-->
+                <a class="navbar-brand" href="#">Navbar</a>
+                <!--Links-->
+                <ul class="nav navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Pricing</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">About</a>
+                    </li>
+                </ul>
+                <!--Search form-->
+                <form class="form-inline">
+                    <input class="form-control" type="text" placeholder="Search"/>
+                </form>
+            </div>
+            <!--/.Collapse content-->
+
+        </div>
+
+    </nav>
+    <!--/.Navbar-->
+
+
+
+</header>
+
+<main>
+<div class="row"  style =  "padding : 20px">
+    <div class="col-md-6" >
+        <div class="jumbotron"  style =  "padding : 30px">
+
+<h3 th:text="Hello" />
+<div id="mylocation"></div>
+
+<table class="table table-hover table-bordered">
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>MARK</th>
+    </tr>
+    <tr th:each="factor : ${factors}">
+        <td th:text="${factor.id}">1</td>
+        <td th:text="${factor.name}">"fffff"</td>
+        <td th:text="${factor.mark}">5</td>
+    </tr>
+</table>
+        </div>
+
+        <div class="btn-group" style =  "padding : 10px">
+<button type="button" class="btn btn-success"  onclick="RestGet()">Метод GET ONE</button>
+<button type="button"  class="btn btn-danger" onclick="RestGetAll()">Метод GET ALL</button>
+            </div>
+</div>
+    <div class="col-md-6">
+        <h2>flghlghfldhgglkhggglfhglfhg lhlfghlhgflghl     fgglhlghg</h2>
+</div>
+    </div>
+
+    </main>
+
+ <!--JQuery-->
+<script type="text/javascript" src="../js/jquery-3.1.1.min.js" th:src="@{/resources/static/js/jquery-3.1.1.min.js}"></script>
+
+<!-- Bootstrap tooltips -->
+<script type="text/javascript" src="../js/tether.min.js" th:src="@{/resources/static/js/tether.min.js}"></script>
+
+<!-- Bootstrap core JavaScript -->
+<script type="text/javascript" src="../js/bootstrap.min.js" th:src="@{/resources/static/js/bootstrap.min.js}"></script>
+
+<!-- MDB core JavaScript -->
+<script type="text/javascript" src="../js/mdb.min.js" th:src="@{/resources/static/js/mdb.min.js}"></script>
+</body>
+</html>
