@@ -5,7 +5,7 @@
 
 	<groupId>com.lrromi</groupId>
 	<artifactId>scenario</artifactId>
-	<version></version>
+	<version>1</version>
 	<packaging>war</packaging>
 
 	<name>scenario</name>
