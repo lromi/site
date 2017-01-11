@@ -40,6 +40,13 @@ public class ScenarioController {
     public Factor getFactor(@PathVariable("id") long id) {
         return factorService.getByID(id);
     }
+    
+     @RequestMapping(value= "/factors", method = RequestMethod.GET)
+    @ResponseBody
+    public List<Factor> getFactors() {
+        return factorService.getAll();
+    }
+
 
 
 }
