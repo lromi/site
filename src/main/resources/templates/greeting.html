@@ -53,6 +53,9 @@
                         for (result in resultAll)
                             document.getElementById('mylocation').innerHTML = 'ID: ' + result.id
                                     + ', сообщение: ' + result.name + ', оценка: ' + result.mark;
+                    }},
+                    error: function(jqXHR, textStatus, errorThrown) {
+                        alert(jqXHR.status + ' ' + jqXHR.responseText);
                     }
 
                 });
